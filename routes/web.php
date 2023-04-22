@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Index\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [IndexController::class, 'showIndex'])->name('index');
+
+Route::group([], function ()
+{
+    Route::get('/register', [AuthController::class, 'showRegisterForm']);
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::get('/login', [AuthController::class, 'showLoginForm']);
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+});
