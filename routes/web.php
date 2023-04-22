@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Index\IndexController;
+use App\Http\Controllers\Index\IndexFeedbackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +20,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'showIndex'])->name('index');
 
 Route::group([], function () {
-    Route::get('/register', [AuthController::class, 'showRegisterForm']);
+    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register-form');
     Route::post('/register', [AuthController::class, 'register'])->name('register');
-    Route::get('/login', [AuthController::class, 'showLoginForm']);
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login-form');
     Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
 
 Route::group([], function (){
-    Route::get('admin', [AdminPanelController::class, 'showAdminPanel']);
+    Route::get('/admin', [AdminPanelController::class, 'showAdminPanel']);
+});
+
+Route::group([], function () {
+   Route::get('/feedback', [IndexFeedbackController::class, 'showFormFeedback'])->name('feedback-form');
+   Route::post('/feedback', [IndexFeedbackController::class, 'sendMsgFeedback'])->name('feedback-msg');
 });
