@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminFeedbackController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Index\IndexController;
@@ -28,6 +29,7 @@ Route::group([], function () {
 
 Route::group([], function (){
     Route::get('/admin', [AdminPanelController::class, 'showAdminPanel']);
+    Route::get('/admin/feedback', [AdminFeedbackController::class, 'showFeedbackList'])->name('feedback-list');
 });
 
 Route::group([], function () {

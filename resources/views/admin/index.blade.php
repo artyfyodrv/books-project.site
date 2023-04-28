@@ -21,6 +21,9 @@
                     <a class="nav-link" href="#">Книги</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('feedback-list') }}">Обратная связь</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Настройки</a>
                 </li>
                 <li class="nav-item">
