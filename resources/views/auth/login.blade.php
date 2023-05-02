@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Авторизация</title>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 <body>
 <form action="{{ route('login') }}" method="POST">
@@ -27,6 +30,8 @@
             @enderror
         </div>
         <br>
+        {{ csrf_field() }}
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </center>
 </form>

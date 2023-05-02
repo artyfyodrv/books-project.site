@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use ReCaptcha\ReCaptcha;
 
 class AuthController extends Controller
 {
@@ -46,5 +47,18 @@ class AuthController extends Controller
             'name' => 'Неверный логин или пароль',
         ]);
 
+    }
+
+    public function submit(Request $request)
+    {
+        $captcha = new ReCaptcha(env('RECAPTCHA_SECRET_KEY'));
+
+        $response = $captcha->verify($request->input('g-recaptcha-response'), $request->ip());
+
+        if (!$response->isSuccess()) {
+            dd('nope');
+        }
+
+        dd('ok');
     }
 }

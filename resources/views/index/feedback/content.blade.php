@@ -4,6 +4,8 @@
     <title>Форма обратной связи</title>
     <!-- Подключение Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
 
@@ -45,6 +47,8 @@
             @enderror
         </div>
         <!-- Кнопка отправки формы -->
+        {{ csrf_field() }}
+        <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
 </div>

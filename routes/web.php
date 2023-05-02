@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminFeedbackController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Index\IndexController;
 use App\Http\Controllers\Index\IndexFeedbackController;
 use Illuminate\Support\Facades\Route;
@@ -20,19 +21,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'showIndex'])->name('index');
 
-Route::group([], function () {
-    Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register-form');
-    Route::post('/register', [AuthController::class, 'register'])->name('register');
-    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login-form');
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
-});
+// Авторизация
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register-form');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login-form');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
-Route::group([], function (){
-    Route::get('/admin', [AdminPanelController::class, 'showAdminPanel']);
-    Route::get('/admin/feedback', [AdminFeedbackController::class, 'showFeedbackList'])->name('feedback-list');
-});
+/**
+ * Feedback system
+ **/
+// Фидбэк админ
+Route::get('/admin', [AdminPanelController::class, 'showAdminPanel'])->name('admin-panel');
+Route::get('/admin/feedback', [FeedbackController::class, 'showList'])->name('feedback-list');
+// Фидбэк главная
+Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback-form');
+Route::post('/feedback', [FeedbackController::class, 'sendMessage'])->name('feedback-msg');
 
-Route::group([], function () {
-   Route::get('/feedback', [IndexFeedbackController::class, 'showFormFeedback'])->name('feedback-form');
-   Route::post('/feedback', [IndexFeedbackController::class, 'sendMsgFeedback'])->name('feedback-msg');
-});

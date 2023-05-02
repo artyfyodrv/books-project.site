@@ -11,6 +11,10 @@
 <body>
 <div class="container">
     <h2>Список сообщений</h2>
+    <a href="{{ route('admin-panel') }}">
+        <button type="button" class="btn btn-secondary">Вернуться</button>
+    </a>
+        <button class="btn btn-info" onclick="location.reload()">Обновить</button>
     <table class="table">
         <thead>
         <tr>
@@ -30,7 +34,7 @@
             <td>{{ $message->name }}</td>
             <td>{{ $message->email }}</td>
             <td>{{ $message->phone }}</td>
-            <td>{{ $message->message }}</td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">{{ $message->message }}</td>
             <td>{{ $message->created_at }}</td>
             <td>
                 <a href="">
