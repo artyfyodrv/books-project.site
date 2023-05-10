@@ -28,16 +28,16 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($messages as $message)
+        @foreach ($messages as $msg)
         <tr>
-            <td>{{ $message->id }}</td>
-            <td>{{ $message->name }}</td>
-            <td>{{ $message->email }}</td>
-            <td>{{ $message->phone }}</td>
-            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">{{ $message->message }}</td>
-            <td>{{ $message->created_at }}</td>
+            <td>{{ $msg->id }}</td>
+            <td>{{ $msg->name }}</td>
+            <td>{{ $msg->email }}</td>
+            <td>{{ $msg->phone }}</td>
+            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">{{ $msg->message }}</td>
+            <td>{{ $msg->created_at }}</td>
             <td>
-                <a href="">
+                <a href="{{ route('feedback-message', $msg->id) }}">
                     <button type="button" class="btn btn-secondary">Открыть сообщение</button>
                 </a>
             </td>

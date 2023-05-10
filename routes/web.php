@@ -33,7 +33,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 // Фидбэк админ
 Route::get('/admin', [AdminPanelController::class, 'showAdminPanel'])->name('admin-panel');
 Route::get('/admin/feedback', [FeedbackController::class, 'showList'])->name('feedback-list');
-Route::get('/admin/feedback/{id}', [FeedbackController::class, 'showMessage']);
+Route::get('/admin/feedback/{id}', [FeedbackController::class, 'showMessage'])->name('feedback-message');
 // Фидбэк главная
 Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback-form');
 Route::post('/feedback', [FeedbackController::class, 'sendMessage'])->name('feedback-msg');
