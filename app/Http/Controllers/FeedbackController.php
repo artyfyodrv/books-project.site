@@ -26,8 +26,14 @@ class FeedbackController extends Controller
     {
         $messages = FeedbackMessage::all();
 
-
         return view('admin/feedback/feedback-list', compact('messages'));
+    }
+
+    public function showMessage($id)
+    {
+        $message = FeedbackMessage::findOrFail($id);
+
+        return view('admin/feedback/feedback-message', compact('message'));
     }
 
 }
