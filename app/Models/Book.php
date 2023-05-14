@@ -19,8 +19,9 @@ class Book extends Model
         'shortDescription',
         'longDescription',
         'status',
-        'authors_id',
-        'categories_id',
+        'author_id',
+        'category_id',
+        'publishedDate'
     ];
 
     public function categories()
