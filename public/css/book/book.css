@@ -1,0 +1,46 @@
+
+.wrap {
+    display: grid;
+    width: 1920px;
+    height: 100vh;
+    margin: 0 auto;
+    grid-template-columns: 300px 600px;
+    grid-template-areas: 'image data edit'
+                         'author text edit';
+    gap: 10px;
+}
+
+img {
+    width: 300px;
+    display: grid;
+    grid-area: image;
+}
+
+.book_title {
+    text-align: center;
+    font-size: 24px;
+    font-family: "Agency FB", serif;
+}
+
+.book_author {
+    font-family: "Arial", serif;
+    font-size: 18px;
+    text-align: left;
+}
+
+.book-data {
+    display: grid;
+    grid-area: data;
+    text-align: center;
+    grid-row: 1;
+}
+
+h4 {
+    font-family: "Arial", serif;
+    font-size: 18px;
+}
+
+.shortDescription, .longDescription {
+    width: 600px;
+    overflow-wrap: break-word;
+}

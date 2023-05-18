@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminFeedbackController;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Index\IndexController;
 use App\Http\Controllers\Index\IndexFeedbackController;
@@ -38,3 +39,14 @@ Route::get('/admin/feedback/{id}', [FeedbackController::class, 'showMessage'])->
 Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback-form');
 Route::post('/feedback', [FeedbackController::class, 'sendMessage'])->name('feedback-msg');
 
+/**
+ * Books System
+ */
+// Книги главной страницы
+Route::get('/categories', [BookController::class, 'showCategoriesIndex'])->name('categories-list');
+
+//Книги админ панели
+Route::get('/admin/books-list', [BookController::class, 'showBooksAdmin'])->name('admin-books-list');
+Route::post('/admin/books-list', [BookController::class, 'newBook'])->name('new-book');
+Route::get('admin/book/{id}', [BookController::class, 'getBook'])->name('admin-get-book');
+Route::post('admin/book/{id}', [BookController::class, 'editBook'])->name('edit-book');
