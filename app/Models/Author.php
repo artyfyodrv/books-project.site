@@ -10,18 +10,14 @@ class Author extends Model
     use HasFactory;
 
     protected $table = 'authors';
+    public $timestamps = false;
 
     protected $fillable = [
-        'author',
+        'name',
     ];
 
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'author_book');
-    }
-
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class, 'author_category');
+        return $this->belongsToMany(Book::class);
     }
 }

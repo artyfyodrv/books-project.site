@@ -13,16 +13,15 @@ return new class extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->default('null');;
-            $table->string('isbn', 30)->default('0');
-            $table->bigInteger('pageCount')->default('0');
-            $table->text('thumbnailUrl')->nullable()->default('null');;
-            $table->text('shortDescription')->default('null');
-            $table->text('longDescription')->default('null');
-            $table->string('status')->default('null');
-            $table->unsignedBigInteger('author_id')->default('0');
-            $table->unsignedBigInteger('category_id')->default('0');
+            $table->string('title')->nullable(false);;
+            $table->string('isbn', 30)->nullable();
+            $table->bigInteger('pageCount')->nullable()->default(0);
+            $table->text('thumbnailUrl')->nullable();
+            $table->text('shortDescription')->nullable();
+            $table->text('longDescription')->nullable();
+            $table->string('status')->nullable();
             $table->date('publishedDate')->nullable();
+            $table->string('isDeleted')->default(0);
             $table->timestamps();
 
         });

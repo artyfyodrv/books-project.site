@@ -10,18 +10,15 @@ class Category extends Model
     use HasFactory;
 
     protected $table = 'categories';
+    public $timestamps = false;
 
     protected $fillable = [
-        'category',
+        'name',
     ];
 
     public function books()
     {
-        return $this->belongsToMany(Book::class, 'book_category');
+        return $this->belongsToMany(Book::class);
     }
 
-    public function authors()
-    {
-        return $this->belongsToMany(Author::class, 'author_category');
-    }
 }

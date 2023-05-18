@@ -18,7 +18,7 @@
                 <a class="nav-link" href="#">Главная</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Книги</a>
+                <a class="nav-link" href="{{ route('categories-list') }}">Книги</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('feedback-form') }}">Обратная связь</a>

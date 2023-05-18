@@ -10,6 +10,7 @@ class Book extends Model
     use HasFactory;
 
     protected $table = 'books';
+    public $timestamps = false;
 
     protected $fillable = [
         'title',
@@ -24,13 +25,13 @@ class Book extends Model
         'publishedDate'
     ];
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class, 'categories');
-    }
-
     public function authors()
     {
-        return $this->belongsToMany(Author::class, 'authors');
+        return $this->belongsToMany(Author::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }

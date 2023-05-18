@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->timestamps();
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('parent_id')->default(0);
         });
     }
 

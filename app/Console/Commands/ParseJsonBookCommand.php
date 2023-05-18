@@ -35,7 +35,6 @@ class ParseJsonBookCommand extends Command
         foreach ($data as $parse) {
 
 
-
             $categoryList = implode(' , ', $parse['categories']);
 //            echo $categoryList . "\n";
             $categories = Category::firstOrCreate(['category' => $categoryList]);
@@ -53,9 +52,9 @@ class ParseJsonBookCommand extends Command
             }
 
             $booksData = Book::firstOrCreate([
-               'title' => $parse['title'],
-               'pageCount' => $parse['pageCount'],
-               'status' => $parse['status'],
+                'title' => $parse['title'],
+                'pageCount' => $parse['pageCount'],
+                'status' => $parse['status'],
                 'isbn' => $parse['isbn'] ?? 0,
                 'shortDescription' => $parse['shortDescription'] ?? 0,
                 'longDescription' => $parse['longDescription'] ?? 0,
